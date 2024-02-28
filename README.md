@@ -32,12 +32,21 @@ without making any modifications.
 To use these wrapper scripts with Stacher, simply download them and put them in the Stacher home directory. Then,
 set the _ffmpeg location_ parameter in the settings.
 
+You still need to **install the real FFmpeg programs** using your package manager or Homebrew.
+
 
 ## What about _Postprocessing_ errors on Windows?
 
 Most builds of `ffmpeg` encounter a similar issue, even [those provided by the yt-dlp project][yt_dlp_builds]. However,
 there are a few builds that seem to work well with `yt-dlp` and Stacher, even for missing audio tracks.
 
+The daily build for the 14th of February 2024 has been attached to this repository.
+
+**You can [download it here][ffmpeg_windows] and import it into Stacher.**
+
+Please refer to the `LICENSE.txt` file included in the ZIP archive for further information.
+
 
 [stacher]: https://stacher.io/
 [yt_dlp_builds]: https://github.com/yt-dlp/FFmpeg-Builds/releases/
+[ffmpeg_windows]: https://github.com/Lazza/ffmpeg-wrapper-scripts/releases/download/1.0.0/ffmpeg-N-113645-g1e7d2007c3-win64-gpl.zip
