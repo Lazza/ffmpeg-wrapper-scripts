@@ -1,0 +1,10 @@
+#!/bin/bash
+#
+# ffmpeg.sh - A Bash script wrapper for ffplay
+#
+# Author: Andrea Lazzarotto
+# License: MIT (Expat) - https://www.tldrlegal.com/license/mit-license
+#
+# This script accepts the same command line arguments as ffplay.
+
+ffplay "$@"

@@ -1,0 +1,41 @@
+#!/bin/bash
+#
+# ffmpeg.sh - A Bash script wrapper for ffmpeg
+#
+# Author: Andrea Lazzarotto
+# License: MIT (Expat) - https://www.tldrlegal.com/license/mit-license
+# Special thanks: ChatGPT for the help in writing this wrapper
+#
+# This script accepts the same command line arguments as ffmpeg and alters the
+# commands so that every "map" argument has a question mark added to the end.
+# It then calls ffmpeg with the corrected arguments.
+
+# Function to add a question mark to the end of each "map" argument
+function alter_maps {
+    local altered_args=()
+    local add_question_mark=false
+
+    # Loop through all arguments
+    for arg in "$@"; do
+        # Check if the current argument is a "-map" option
+        if [[ $arg == "-map" ]]; then
+            add_question_mark=true
+        fi
+
+        # If the current argument is a map and a question mark should be added,
+        # append a question mark to the argument
+        if [[ $add_question_mark == true && $arg =~ ^[0-9]*:[va]:[0-9]*$ ]]; then
+            arg="$arg?"
+            add_question_mark=false
+        fi
+
+        # Add the argument to the altered_args array
+        altered_args+=("$arg")
+    done
+
+    # Print the altered arguments
+    printf "%q " "${altered_args[@]}"
+}
+
+# Call the alter_maps function and pass the fixed arguments to ffmpeg
+eval ffmpeg $(alter_maps "$@")
